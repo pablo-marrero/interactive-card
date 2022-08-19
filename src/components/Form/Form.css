@@ -1,0 +1,8 @@
+.form-register label{
+    text-transform: uppercase;
+    display: block;
+}
+
+.form-register input[name="confirm"]{
+    display: block;
+}
