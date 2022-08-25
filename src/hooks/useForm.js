@@ -1,15 +1,39 @@
-export const useForm= (objectValidate)=>{
+import React, {useState} from 'react'
+
+export const useForm= (objectValidate, validateForm)=>{
     let { cardName, cardNumber,cardMounth,cardYear,cardCvc } = objectValidate
 
-    const handelChange = ()=>{
+    const [form, setForm] = useState(objectValidate)
+    const [error, setError] = useState({})
+    const [loading, setLoading] = useState(false)
+    const [errorSend, setErrorSend] = useState(null)   
 
+
+    const handelChange = (e)=>{
+        setForm({
+            ...form,
+            [e.target.name] : e.target.value
+        })
     }
 
-    const handelBlur = ()=>{
-
+    const handelBlur = (e)=>{
+        handelChange(e)
+        setError(validateForm(form))
+        setErrorSend({msg:""})
     }
 
-    const handelClick= ()=>{
-        
+    const handelClick= (e)=>{
+        e.preventDefault()
+        if(Object.key(error).lenght !== 0){
+            setErrorSend({msg:"Check error!"})
+        }
+        else{
+            let formComplete = "Acá ponemos la imagen de que se cargo satifactoriamente la tarjeta"
+        }
     }
+}
+
+return {
+    form,error,loading,errorSend,
+    handelChange,handelBlur,handelClick
 }

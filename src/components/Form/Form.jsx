@@ -2,7 +2,7 @@ import React from 'react'
 // import { useForm } from '../../hooks/useForm'
 import "./Form.css"
 
-export const Form = () => {
+export const Form = ({setNumberCard}) => {
 
     const initialForm ={
         cardName:"",
@@ -22,7 +22,7 @@ export const Form = () => {
             <label htmlFor="">
                 cardmolder name
             </label>
-            <input type="text" name='cardName'/>
+            <input type="number" name='cardName'/>
              
             <label htmlFor="">
                 card number
