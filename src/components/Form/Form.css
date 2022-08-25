@@ -1,8 +1,73 @@
+/* EStilos generales */
+.form-register{
+    width: 100%;
+}
+
 .form-register label{
     text-transform: uppercase;
     display: block;
+    font-size: .6em;
+    margin-top: 6%;
+    margin-bottom: 1.5%;
+    font-weight: 600;
+    color: hsl(279, 6%, 55%);
 }
 
+.form-register input{
+    line-height: 35px;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid hsl(270, 3%, 87%);
+    padding-left: 5%;
+}
+
+/* Estilos input por tipo y nombre */
 .form-register input[name="confirm"]{
     display: block;
+    margin-top: 6%;
+    color:white;
+    background-color: hsl(278, 68%, 11%);
+    padding: 0;
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container-label{
+    display: flex;
+}
+
+.container-label>label{
+    width: 34%;
+}
+
+
+.container-group-input{
+    display: flex;
+    width: 100%;
+}
+.container-group-input>div{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-group-input>div>input{
+    width: 48%;
+    line-height: 35px;
+}
+
+.container-group-input>div:last-child{
+    width: 48%;
+    margin-left: 2%;
+}
+
+.container-group-input>div:last-child>input{
+    width: 100%;
+}
+
+

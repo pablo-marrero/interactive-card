@@ -10,9 +10,18 @@ main{
 main section{
     width: 50%;
     height: 100%;
+    position: relative;
+}
+
+main section:first-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 main section:last-child{
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
