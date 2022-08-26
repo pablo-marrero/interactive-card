@@ -1,10 +1,13 @@
-import React from 'react'
-import cardLogo from "../../assets/card-logo.svg"
-import "./Target.css"
+import React from "react";
+import cardLogo from "../../assets/card-logo.svg";
+import "./Target.css";
+import { useForm } from "../../hooks/useForm";
 
 export const TargetFront = () => {
+  const { form, handelChange } = useForm();
+
   return (
-    <div className='card card-front'>
+    <div className="card card-front">
       <div>
         <figure>
           <picture>
@@ -17,16 +20,21 @@ export const TargetFront = () => {
           <span></span>
         </figure>
 
-        <div className='container-input'>
-          <input type="number" placeholder='0000 0000 0000 0000'/>
-    
+        <div className="container-input">
+          <input
+            type="number"
+            value={form.cardNumber}
+            placeholder="0000 0000 0000 0000"
+            onChange={handelChange}
+          />
+
           <div>
-            <input type="text" placeholder='JANE APPLESSED'/>
-    
-            <input type="text" placeholder='00/00'/>
+            <input type="text" placeholder="JANE APPLESSED" />
+
+            <input type="text" placeholder="00/00" />
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
