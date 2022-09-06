@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import cardLogo from "../../assets/card-logo.svg";
 import "./Target.css";
 import { useForm } from "../../hooks/useForm";
 
-export const TargetFront = () => {
-  const { form, handelChange } = useForm();
+export const TargetFront = ({form}) => {
 
   return (
     <div className="card card-front">
@@ -21,12 +20,13 @@ export const TargetFront = () => {
         </figure>
 
         <div className="container-input">
-          <input
+          {/* <p>{form.cardName}, hola</p> */}
+          {/* <input
             type="number"
             value={form.cardNumber}
             placeholder="0000 0000 0000 0000"
             onChange={handelChange}
-          />
+          /> */}
 
           <div>
             <input type="text" placeholder="JANE APPLESSED" />

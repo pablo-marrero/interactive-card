@@ -1,13 +1,16 @@
 import React from "react";
-import { useForm } from "../../hooks/useForm";
+// import { useForm } from "../../hooks/useForm";
 import "./Form.css";
 
-export const Form = () => {
- 
-  const validateForm = () => {};
+export const Form = ({form}) => {
+  const handelChange = ()=>{
 
-  const { handelChange, handelBlur, handelClick, form, error, errorSend } =
-    useForm(validateForm);
+  }
+
+  const handelBlur = ()=>{
+    
+  }
+
 
   return (
     <div>
@@ -16,7 +19,7 @@ export const Form = () => {
         <input
           type="number"
           name="cardName"
-          value={form.cardName}
+          // value={form.cardName}
           onChange={handelChange}
           onBlur={handelBlur}
         />
@@ -25,7 +28,7 @@ export const Form = () => {
         <input
           type={"number"}
           name="cardNumber"
-          value={form.cardNumber}
+          // value={form.cardNumber}
           onChange={handelChange}
           onBlur={handelBlur}
         />
@@ -40,14 +43,14 @@ export const Form = () => {
             <input
               type={"number"}
               name="cardMounth"
-              value={form.cardMounth}
+              // value={form.cardMounth}
               onChange={handelChange}
               onBlur={handelBlur}
             />
             <input
               type={"number"}
               name="cardYear"
-              value={form.cardYear}
+              // value={form.cardYear}
               onChange={handelChange}
               onBlur={handelBlur}
             />
@@ -57,7 +60,7 @@ export const Form = () => {
             <input
               type={"number"}
               name="cardCvc"
-              value={form.cardCvc}
+              // value={form.cardCvc}
               onChange={handelChange}
               onBlur={handelBlur}
             />
