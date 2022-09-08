@@ -1,13 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useState ,useEffect } from "react";
 import cardLogo from "../../assets/card-logo.svg";
+import { sharingInformationService } from "../../Services/sharing-information-service";
 import "./Target.css";
-import { useForm } from "../../hooks/useForm";
+// import { useForm } from "../../hooks/useForm";
 
-export const TargetFront = ({form}) => {
+export const TargetFront = () => {
+
+  const initialForm = {
+    cardName: "",
+    cardNumber: "",
+    cardMounth: "",
+    cardYear: "",
+    cardCvc: "",
+  };
+  
+
+  let subscribeData = sharingInformationService.getSubject()
+  const [dataValue , setDataValue ] = useState(initialForm)
+
+  useEffect(()=>{
+    subscribeData.subscribe(data =>{
+      // console.log(data)
+      setDataValue({...dataValue,...data})
+    })
+  })
 
   return (
     <div className="card card-front">
       <div>
+        {console.log(dataValue)}
         <figure>
           <picture>
             <img src={cardLogo} alt="card-logo" />
@@ -19,8 +40,9 @@ export const TargetFront = ({form}) => {
           <span></span>
         </figure>
 
+        <p>{dataValue.cardNumber}</p>
         <div className="container-input">
-          {/* <p>{form.cardName}, hola</p> */}
+          <p>{dataValue.cardName}, hola</p>
           {/* <input
             type="number"
             value={form.cardNumber}

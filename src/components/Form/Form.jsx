@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
+import { sharingInformationService } from "../../Services/sharing-information-service";
 // import { useForm } from "../../hooks/useForm";
 import "./Form.css";
 
-export const Form = ({form}) => {
-  const handelChange = ()=>{
 
+
+export const Form = () => {
+
+  const initialForm = {
+    cardName: "",
+    cardNumber: "",
+    cardMounth: "",
+    cardYear: "",
+    cardCvc: "",
+  };
+  
+  const [form, setForm] = useState(initialForm);
+
+  const handelChange = (e)=>{
+    setForm({
+      ...form,
+      [e.target.name] : e.target.value
+    })
+      sendBetweenComponent({[e.target.name] : e.target.value})
   }
 
-  const handelBlur = ()=>{
+  async function handelBlur() {
+   //Se va a usar para las validaciones
+  }
+
+  const sendBetweenComponent = (value)=>{
+    sharingInformationService.setSubject(value)
+  }
+
     
-  }
-
 
   return (
     <div>
