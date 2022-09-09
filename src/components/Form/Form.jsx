@@ -1,58 +1,40 @@
-import React, { useState } from "react";
-import { sharingInformationService } from "../../Services/sharing-information-service";
-// import { useForm } from "../../hooks/useForm";
+import React from "react";
 import "./Form.css";
+import { styleFormatFormLength,replaceCharacter } from "./utilities/style-format-text";
 
-
-
-export const Form = () => {
-
-  const initialForm = {
-    cardName: "",
-    cardNumber: "",
-    cardMounth: "",
-    cardYear: "",
-    cardCvc: "",
-  };
+export const Form = ({changeValue}) => {
   
-  const [form, setForm] = useState(initialForm);
-
-  const handelChange = (e)=>{
-    setForm({
-      ...form,
-      [e.target.name] : e.target.value
-    })
-      sendBetweenComponent({[e.target.name] : e.target.value})
+  const handelChange = (e,num)=>{
+    replaceCharacter(e)
+    if(styleFormatFormLength(e, num)) {
+      changeValue(e)
+    }
+  }
+  const handelKeyUp = (e)=>{
+    replaceCharacter(e)
   }
 
   async function handelBlur() {
    //Se va a usar para las validaciones
   }
 
-  const sendBetweenComponent = (value)=>{
-    sharingInformationService.setSubject(value)
-  }
-
-    
-
   return (
     <div>
       <form className="form-register">
         <label htmlFor="">cardmolder name</label>
         <input
-          type="number"
+          type="text"
           name="cardName"
-          // value={form.cardName}
           onChange={handelChange}
           onBlur={handelBlur}
+          onKeyUpCapture={(e)=>handelKeyUp(e)}
         />
 
         <label htmlFor="">card number</label>
         <input
-          type={"number"}
+          type={"text"}
           name="cardNumber"
-          // value={form.cardNumber}
-          onChange={handelChange}
+          onChange={(e)=>handelChange(e,16)}
           onBlur={handelBlur}
         />
 
@@ -64,28 +46,26 @@ export const Form = () => {
         <div className="container-group-input">
           <div>
             <input
-              type={"number"}
+              type={"text"}
               name="cardMounth"
-              // value={form.cardMounth}
-              onChange={handelChange}
+              onChange={(e)=>handelChange(e,2)}
               onBlur={handelBlur}
             />
             <input
-              type={"number"}
+              type={"text"}
               name="cardYear"
-              // value={form.cardYear}
-              onChange={handelChange}
+              onChange={(e)=>handelChange(e,2)}
               onBlur={handelBlur}
             />
           </div>
 
           <div>
             <input
-              type={"number"}
+              type={"text"}
               name="cardCvc"
-              // value={form.cardCvc}
-              onChange={handelChange}
+              onChange={(e)=>handelChange(e,3)}
               onBlur={handelBlur}
+              on
             />
           </div>
         </div>

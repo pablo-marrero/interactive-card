@@ -6,15 +6,34 @@ import { TargetBack } from "../../components/Target/TargetBack";
 
 export const Main = () => {
 
+  const initialForm = {
+    cardName: "",
+    cardNumber: "",
+    cardMounth: "MM",
+    cardYear: "YY",
+    cardCvc: "",
+  };
+
+  const [first, setfirst] = useState(initialForm)
+
+  const changeValue = (e)=>{
+    setfirst({
+      ...first,
+      [e.target.name] : e.target.value
+    })
+  }
+
   return (
+
+
     <main>
       <section>
-        <TargetFront />
-        <TargetBack />
+        <TargetFront first={first}/>
+        <TargetBack first={first}/>
       </section>
 
       <section>
-        <Form/>
+        <Form changeValue={changeValue}/>
       </section>
     </main>
   );
