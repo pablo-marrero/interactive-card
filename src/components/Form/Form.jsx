@@ -1,22 +1,28 @@
 import React from "react";
 import "./Form.css";
-import { styleFormatFormLength,replaceCharacter } from "./utilities/style-format-text";
+import {
+  replaceCharacterLetter,
+  replaceCharacterNumber,
+  styleFormatFormLength,
+  controlDate,
+} from "./utilities/style-format-text";
 
-export const Form = ({changeValue}) => {
-  
-  const handelChange = (e,num)=>{
-    replaceCharacter(e)
-    if(styleFormatFormLength(e, num)) {
-      changeValue(e)
-    }
-  }
-  const handelKeyUp = (e)=>{
-    replaceCharacter(e)
-  }
+export const Form = ({ changeValue, first }) => {
 
-  async function handelBlur() {
-   //Se va a usar para las validaciones
-  }
+  const handelChangeTargerRegisterNumber = (e) => {
+    replaceCharacterLetter(e);
+    changeValue(e);
+  };
+
+  const handelChangeTargerRegisterName = (e) => {
+    replaceCharacterNumber(e);
+    changeValue(e);
+  };
+
+   const handelChangeTargerRegisterDate = (e) =>{
+    controlDate(e)
+    changeValue(e);
+   }
 
   return (
     <div>
@@ -25,17 +31,15 @@ export const Form = ({changeValue}) => {
         <input
           type="text"
           name="cardName"
-          onChange={handelChange}
-          onBlur={handelBlur}
-          onKeyUpCapture={(e)=>handelKeyUp(e)}
+          onChange={handelChangeTargerRegisterName}
         />
 
         <label htmlFor="">card number</label>
         <input
           type={"text"}
           name="cardNumber"
-          onChange={(e)=>handelChange(e,16)}
-          onBlur={handelBlur}
+          onChange={handelChangeTargerRegisterNumber}
+          maxLength={19}
         />
 
         <div className="container-label">
@@ -48,14 +52,14 @@ export const Form = ({changeValue}) => {
             <input
               type={"text"}
               name="cardMounth"
-              onChange={(e)=>handelChange(e,2)}
-              onBlur={handelBlur}
+              onChange={handelChangeTargerRegisterDate}
+              maxLength={2}
             />
             <input
               type={"text"}
               name="cardYear"
-              onChange={(e)=>handelChange(e,2)}
-              onBlur={handelBlur}
+              onChange={handelChangeTargerRegisterDate}
+              maxLength={2}
             />
           </div>
 
@@ -63,9 +67,8 @@ export const Form = ({changeValue}) => {
             <input
               type={"text"}
               name="cardCvc"
-              onChange={(e)=>handelChange(e,3)}
-              onBlur={handelBlur}
-              on
+              onChange={handelChangeTargerRegisterNumber}
+              maxLength={3}
             />
           </div>
         </div>

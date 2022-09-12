@@ -16,7 +16,6 @@
 
 .card input::placeholder{
     color: white;
-    
 }
 
 
@@ -84,4 +83,30 @@
     width: 100%;
     padding-left: 20%;
     text-align: 28px;
+}
+
+@media(max-width:425px){
+
+    .card{
+        width: 325px;
+        height: 175px;
+        border-radius: 10px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+    }
+    .card-front{
+        z-index: 100;
+        top: 50%;
+        left: 5%;
+    }
+
+    .card-back{
+        top: 15%;
+        right: 5%;
+    }
+
+    .container-input>input{
+        font-size: 22px;
+    }
 }

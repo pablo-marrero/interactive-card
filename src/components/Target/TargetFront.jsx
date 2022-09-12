@@ -17,16 +17,16 @@ export const TargetFront = ({first}) => {
 
         <div className="container-input">
           <input
-            type="number"
+            type="text"
             value={first.cardNumber}
             placeholder="0000 0000 0000 0000"
             readOnly
           />
 
           <div>
-            <input type="text" placeholder="JANE APPLESSED" value={first.cardName} readOnly/>
+            <input type="text" placeholder="NAME SURNAME" value={first.cardName} readOnly/>
 
-            <input type="text" placeholder="00/00" value={`${first.cardMounth}/${first.cardYear}`} readOnly/>
+            <input type="text" value={`${first.cardMounth}/${first.cardYear}`} readOnly/>
           </div>
         </div>
       </div>

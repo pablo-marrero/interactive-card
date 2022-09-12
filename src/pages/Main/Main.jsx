@@ -9,14 +9,15 @@ export const Main = () => {
   const initialForm = {
     cardName: "",
     cardNumber: "",
-    cardMounth: "MM",
-    cardYear: "YY",
+    cardMounth: "00",
+    cardYear: "00",
     cardCvc: "",
   };
 
   const [first, setfirst] = useState(initialForm)
 
   const changeValue = (e)=>{
+    // console.log(e)
     setfirst({
       ...first,
       [e.target.name] : e.target.value
@@ -24,8 +25,6 @@ export const Main = () => {
   }
 
   return (
-
-
     <main>
       <section>
         <TargetFront first={first}/>
@@ -33,7 +32,9 @@ export const Main = () => {
       </section>
 
       <section>
-        <Form changeValue={changeValue}/>
+        <Form changeValue={changeValue}
+        first={first}
+        />
       </section>
     </main>
   );
