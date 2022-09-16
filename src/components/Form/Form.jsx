@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { ImageSend } from "../ImageSend/ImageSend";
 import "./Form.css";
 import {
   replaceCharacterLetter,
   replaceCharacterNumber,
-  styleFormatFormLength,
   controlDate,
+  sendFormTarget,
 } from "./utilities/style-format-text";
 
 export const Form = ({ changeValue, first }) => {
+
+  const [erro, setErro] = useState(first)
+  const [isSend, setIsSend ] = useState(null)
 
   const handelChangeTargerRegisterNumber = (e) => {
     replaceCharacterLetter(e);
@@ -24,9 +28,16 @@ export const Form = ({ changeValue, first }) => {
     changeValue(e);
    }
 
+   const sendRegisterTarget = (e)=>{
+    e.preventDefault()
+    sendFormTarget(first, setIsSend)
+   }
+
+   
+
   return (
-    <div>
-      <form className="form-register">
+    <>{!isSend ?
+      <form className="form-register" onSubmit={sendRegisterTarget}>
         <label htmlFor="">cardmolder name</label>
         <input
           type="text"
@@ -47,18 +58,16 @@ export const Form = ({ changeValue, first }) => {
           <label htmlFor="">cvc</label>
         </div>
 
-        <div className="container-group-input">
+        <div className="container-group-input" onChange={handelChangeTargerRegisterDate}>
           <div>
             <input
               type={"text"}
               name="cardMounth"
-              onChange={handelChangeTargerRegisterDate}
               maxLength={2}
             />
             <input
               type={"text"}
               name="cardYear"
-              onChange={handelChangeTargerRegisterDate}
               maxLength={2}
             />
           </div>
@@ -75,6 +84,11 @@ export const Form = ({ changeValue, first }) => {
 
         <input type="submit" name="confirm" value="Confirm" />
       </form>
-    </div>
+      :
+      <ImageSend title = "THANK YOU!"
+        paragraph="We'eve added your card details"
+      />
+      }
+    </>
   );
 };

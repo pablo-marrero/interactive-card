@@ -1,17 +1,3 @@
-export const styleFormatFormLength = (e, num)=>{
-    let name = e.target.name
-    let value = e.target.value
-    if(name === "cardNumber" &&  value.length > num) return false
-
-    if(name === "cardMounth" &&  value.length > num) return false
-
-    if(name === "cardYear" &&  value.length > num) return false
-
-    if(name === "cardCvc" &&  value.length > num) return false
-
-    return true
-}
-
 export const replaceCharacterLetter = (e)=>{
     let value = e.target.value
     e.target.value = value
@@ -22,16 +8,43 @@ export const replaceCharacterLetter = (e)=>{
 
 export const replaceCharacterNumber = (e)=>{
     let value = e.target.value
+
     e.target.value = value.replace(/[0-9]/g,"")
     .toUpperCase()
 }
 
 export const controlDate = (e)=>{
     let value = e.target.value
-    let date = new Date();
+    let name  = e.target.name
+    let date = new Date().toLocaleDateString().split("/");
 
+// console.log(e.target.nextSibling)
     e.target.value = value.replace(/\D/g, "")
 
+    if(name === "cardYear" &&
+     value <= date[2] &&
+     e.target.previousSibling.value  < date[1] 
+     ) return console.log("papa")
+
+}
+
+export const sendFormTarget = (data, setIsSend)=>{
+     const {cardName,
+            cardNumber,
+            cardMounth, 
+            cardYear,
+            cardCvc} = data
+
+    if(cardName.trim() === "" ||
+       cardNumber.trim() === "" ||
+       cardMounth.trim() === "00" ||
+       cardYear.trim() === "00" ||
+       cardCvc.trim() === ""
+    ) return console.log("error faltan completar campos")
+
+    if(cardNumber.length < 19) return console.log("menos de 19")
+
+    if(cardCvc.length < 3) return console.log("menos de 3")
     
-    console.log(date.toLocaleDateString())
+    else return setIsSend(true)
 }
