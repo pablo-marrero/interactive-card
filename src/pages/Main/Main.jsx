@@ -33,7 +33,7 @@ export const Main = () => {
 
       <section>
         <Form changeValue={changeValue}
-        first={first}
+        first={initialForm}
         />
       </section>
     </main>
