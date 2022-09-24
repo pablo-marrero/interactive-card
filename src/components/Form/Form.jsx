@@ -52,26 +52,28 @@ export const Form = ({ changeValue, first }) => {
   return (
     <>{!isSend.send ?
       <form className="form-register" onSubmit={(e)=>sendRegisterTarget(e)}>
-        <label htmlFor="">cardmolder name</label>
+        <label htmlFor="cardName">cardmolder name</label>
         <input
           type="text"
           name="cardName"
           onChange={handelChangeTargerRegisterName}
+          id="cardName"
         />
         {erro.cardName && <p>{erro.cardName}</p>}
 
-        <label htmlFor="">card number</label>
+        <label htmlFor="cardNumber">card number</label>
         <input
           type={"text"}
           name="cardNumber"
           onChange={handelChangeTargerRegisterNumber}
           maxLength={19}
+          id="cardNumber"
         />
         {erro.cardNumber && <p>{erro.cardNumber}</p>}
 
         <div className="container-label">
-          <label htmlFor="">exp.date(mm/yy)</label>
-          <label htmlFor="">cvc</label>
+          <label htmlFor="cardMounth">exp.date(mm/yy)</label>
+          <label htmlFor="cardCvc">cvc</label>
         </div>
 
         <div className="container-group-input" onChange={handelChangeTargerRegisterDate}>
@@ -80,11 +82,13 @@ export const Form = ({ changeValue, first }) => {
               type={"text"}
               name="cardMounth"
               maxLength={2}
+              id="cardMounth"
             />
             <input
               type={"text"}
               name="cardYear"
               maxLength={2}
+              id="cardYear"
             />
           </div>
           <div>
@@ -93,6 +97,7 @@ export const Form = ({ changeValue, first }) => {
               name="cardCvc"
               onChange={handelChangeTargerRegisterNumber}
               maxLength={3}
+              id="cardCvc"
               />
           </div>
         </div>
